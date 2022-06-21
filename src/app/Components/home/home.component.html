@@ -1,0 +1,72 @@
+<div class="py-5 bage" >
+  <div class="filter-blur"></div>
+  <section class="my-5">
+    <swiper
+      [effect]="'coverflow'"
+      [grabCursor]="true"
+      [centeredSlides]="true"
+      [slidesPerView]="'auto'"
+      [loop]="true"
+      [loopFillGroupWithBlank]="true"
+      [coverflowEffect]="{
+        rotate: 50,
+        stretch: 0,
+        depth: 300,
+        modifier: 1,
+        slideShadows: true
+      }"
+      [autoplay]="{
+        delay: 1500,
+        disableOnInteraction: true
+      }"
+      class="swiper-home"
+    >
+      <ng-template
+        swiperSlide
+        class="width-slide h-100 p-0"
+        *ngFor="let item of TrendingAll.results"
+      >
+        <div class="h-100 w-100 slider" [routerLink]="['/home',item.media_type,item.id]">
+          <img
+            class="img-carousel h-100 w-100"
+            src="{{ 'https://image.tmdb.org/t/p/w500' + item.poster_path }}"
+            [alt]="item.poster_path"
+          />
+          <span>{{ item.vote_average | number: "1.1-1" }}</span>
+          <div class=" text-center original_title">
+            <p>
+              {{
+                item.original_title
+                  ? "" + item.original_title + ""
+                  : "" + item.original_name + ""
+              }}
+            </p>
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+  </section>
+  <div class="container">
+        <!-----------------------list--------------------->
+    <!----------I need do position sticky--------------->
+    <div class="buttons d-flex align-items-center my-3">
+      <button mat-fab color="primary" style="margin-right: 10px;" aria-label="Example icon button with a home icon" routerLink="/">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button style="border-radius: 20px;font-size: 20px;margin-right: 10px;" mat-raised-button color="primary" *ngFor="let link of links"[routerLink]="'/home/'+link"
+      routerLinkActive="active-bottom">{{link}}</button>
+    </div>
+    <!-------------------------FORM view Trend----------------------------->
+    <section class="w-100 d-flex justify-content-center">
+      <app-trend></app-trend>
+    </section>
+    <!-------------------- MOVIE TOP RATED --------------------->
+    <ng-container>
+      <app-media-category [mediaCategory]="TopratedMovie.results!" [mediaType]="'movie'" [mediaCat]="'top_rated'" [errorMessage]="errorMessage"></app-media-category>
+    </ng-container>
+    <!-------------------- TV TOP RATED --------------------->
+    <ng-container>
+      <app-media-category [mediaCategory]="TopratedTv.results!" [mediaType]="'tv'" [mediaCat]="'top_rated'" [errorMessage]="errorMessage"></app-media-category>
+    </ng-container>
+  </div>
+</div>

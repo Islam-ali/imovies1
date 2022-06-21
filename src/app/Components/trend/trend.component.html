@@ -1,0 +1,9 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <div class="container">
+    <!---------------- Discover ------------>
+    <section>
+      <app-discover [mediaType]="'trend'" [discoverData]="data?.results!" [totalBage]="data?.total_pages" (page)="getTrend($event)"></app-discover>
+    </section>
+  </div>
+</div>

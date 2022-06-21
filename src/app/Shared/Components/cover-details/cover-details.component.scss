@@ -1,0 +1,124 @@
+/************ header *********/
+.divcard
+{
+  position: relative;
+  padding: 50px;
+}
+.rgba
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.7);
+  z-index: 0;
+  backdrop-filter: blur(5px);
+}
+.cards
+{
+  display: flex;
+  .poster-img{
+    z-index: 1;
+  }
+  .details-content{
+    width: 60%;
+    color: aliceblue;
+    padding: 0 0 0 50px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+}
+/****************details-content******************/
+
+.details-content h3
+{
+  font-family: 'Source Sans Pro', Arial, sans-serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  line-height: 40px;
+}
+.genres-date
+{
+  display: flex;
+  flex-direction: column;
+}
+a
+{
+  text-decoration: none ;
+  color: aliceblue;
+}
+.genres-date .date
+{
+  margin-right: 20px;
+}
+.genres-date .fa-calendar-alt
+{
+  font-size: 100%;
+  color: #787878;
+}
+.rate
+{
+  font-size: 16px;
+  font-weight: 500;
+}
+.overview h4
+{
+  font-family: 'Source Sans Pro', Arial, sans-serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+}
+.overview p
+{
+  width: 100%;
+}
+.poster-img{
+  display: flex;
+  .img
+  {
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 2px 4px 1px rgb(0 0 0 / 9%);
+    width: max-content;
+    max-height: 450px;
+    max-width: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards
+  {
+    flex-direction: column;
+    .details-content
+    {
+      z-index: 1;
+      color: aliceblue;
+      margin:20px auto;
+      padding: 0 5px;
+      width: 100% ;
+    }
+  }
+  .poster-img
+  {
+    margin: 0 auto;
+  }
+  .ifram
+  {
+    width: 100%;
+    height: 300px;
+  }
+  .divcard
+  {
+    padding: 50px 0 0 0;
+  }
+}
+@media (max-width:400px) {
+  .poster-img .img
+  {
+    max-width: 100%;
+  }
+}

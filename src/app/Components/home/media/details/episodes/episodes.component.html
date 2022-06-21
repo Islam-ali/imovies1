@@ -1,0 +1,13 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <div class="container" style="min-height: 100vh;">
+    <!---------------- view all episodes ------------>
+    <section>
+      <app-discover [title]="'episodes'" [discoverData]="episodes" [errorMessage]="errorMessage" [idTv]="idTv"></app-discover>
+    </section>
+    <!-------------- all seasons -------------->
+    <section>
+      <app-carousel-tv [data]="allSeason" [idTv]="idTv" [title]="'all seasons'"></app-carousel-tv>
+    </section>
+  </div>
+</div>

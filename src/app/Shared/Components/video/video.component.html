@@ -1,0 +1,8 @@
+<div class="video position-relative" *ngIf="video?.length != 0">
+  <h3>{{ video?.[0]?.name }}</h3>
+  <iframe class="ifram" [src]="url+video?.[0]?.key | safePipe " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+    <!------------- error message ------------->
+    <ng-container *ngIf="video?.length == 0">
+      <app-error-message [message]="'Not Fond Video'"></app-error-message>
+    </ng-container>

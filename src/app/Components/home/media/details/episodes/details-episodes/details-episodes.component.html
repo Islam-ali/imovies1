@@ -1,0 +1,21 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+    <section>
+      <app-cover-details *ngIf="detailsEpisodes != {}" [Details]="detailsEpisodes" [errorMessage]="errorMessage"></app-cover-details >
+      <div *ngIf="detailsEpisodes == {} && errorMessage" class="position-relative w-100 d-flex align-items-center justify-content-center py-5" style="color: #fff;font-weight: 400;min-height: 80vh;"><i class="fa-solid fa-triangle-exclamation mx-2"></i>{{errorMessage}}</div>
+    </section>
+    <div class="container">
+      <section class="my-5">
+        <app-co-workers [detailsEpisode]="detailsEpisodes?.crew" [title]="'crew'"></app-co-workers>
+      </section>
+      <section class="my-5">
+        <app-co-workers [detailsEpisode]="detailsEpisodes?.guest_stars" [title]="'guest stars'"></app-co-workers>
+      </section>
+      <section class="my-5 text-center w-100">
+        <app-video [video]="videoEpisode"></app-video>
+      </section>
+      <section class="my-5">
+        <app-carousel-tv [data]="allEpisodes" [idTv]="idTv" [title]="'all episodes'"></app-carousel-tv>
+      </section>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+.example-card
+{
+  background: linear-gradient(to bottom, #050022 0%, #849db6 100%);
+  color: darkseagreen;
+  width: 100% !important;
+}
+.grid-card
+{
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+  gap: 10px;
+  @media (max-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(1,100%);
+      gap: 10px;
+  }
+  .mat-card-title{
+    color: #ddd;
+  }
+  .mat-card-subtitle{
+    color: #849db6;
+  }
+}
+.example-header-image {
+  background-size: contain;
+  background-position: center
+}
+.pContent
+{
+  overflow: hidden;
+  max-height: 200px;
+  padding: 10px;
+}
+.toggleSee
+{
+  background: rgba(0,0,0,.1);
+  overflow: hidden;
+  max-height: max-content;
+}
+.fa-chevron-down{
+  color: #fff;
+  &:hover{
+    color: #ccc;
+  }
+}

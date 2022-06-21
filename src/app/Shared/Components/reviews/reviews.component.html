@@ -1,0 +1,22 @@
+<div class="reviews position-relative">
+  <h2>Reviews</h2>
+  <section class="d-flex justify-content-start row px-3 my-4">
+    <mat-card class="example-card" *ngFor="let item of reviews; let index = index">
+      <mat-card-header>
+        <div mat-card-avatar *ngIf="item.author_details?.avatar_path == null" style="background-image: url(../../../../assets/images/defult-image.webp);background-size: cover;background-position: center;" class="example-header-image"></div>
+        <div mat-card-avatar *ngIf="item.author_details?.avatar_path != null" [style.background]="item.author_details?.avatar_path?.slice(0,6) == '/https' ? 'url('+item.author_details?.avatar_path?.slice(1)+')' :'url(https://image.tmdb.org/t/p/w500/'+item.author_details?.avatar_path+')' " class="example-header-image"></div>
+        <mat-card-title>{{ item.author }}</mat-card-title>
+        <mat-card-subtitle><p><i class="far fa-clock"></i> :{{ item.updated_at | date: 'hh:mm:ss a' }}</p></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="pContent" #myDiv  >{{ item.content}}</p>
+        <a class="btn mb-2" *ngIf="item?.content?.length > '350'" (click)='myDiv.classList.toggle("toggleSee")'  >show {{ myDiv.classList.contains('toggleSee') ? 'less' : 'more ...' }}</a>
+        <p><i class="far fa-calendar-alt"></i> :{{ item.updated_at | date: 'dd | MM | Y' }}</p>
+      </mat-card-content>
+    </mat-card>
+        <!------------- error message ------------->
+      <ng-container *ngIf="reviews?.length == 0">
+        <app-error-message [message]="'Not Fond Reviews'"></app-error-message>
+      </ng-container>
+  </section>
+</div>

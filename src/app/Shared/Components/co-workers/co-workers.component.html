@@ -1,0 +1,19 @@
+<div class="position-relative ">
+  <h2>{{title}}</h2>
+  <mat-card class="box-carousel">
+    <!-- ----------- error message ------------->
+<ng-container *ngIf="detailsEpisode?.length == 0">
+  <app-error-message
+    [message]="'Not Fond ' + title + ''"
+  ></app-error-message>
+</ng-container>
+    <div class="grid-card pContent" #card>
+      <mat-card-header *ngFor="let item of detailsEpisode; let i=index">
+        <div mat-card-avatar class="example-header-image" [style.background-image]="item.profile_path == null ? 'url(../../assets/images/defult-image.webp)':'url(https://image.tmdb.org/t/p/w500'+item.profile_path+')'"></div>
+        <mat-card-title>{{item.original_name}}</mat-card-title>
+        <mat-card-subtitle>{{item.job || item.character}}</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <a class="btn mb-2 w-100" *ngIf="detailsEpisode?.length > 3" (click)='card.classList.toggle("toggleSee")'><i class="fas fa-chevron-down m-auto"></i></a>
+  </mat-card>
+</div>

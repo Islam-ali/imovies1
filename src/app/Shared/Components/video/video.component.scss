@@ -1,0 +1,12 @@
+.video{
+  .ifram
+  {
+    border-radius: 10px;
+    min-width: 70%;
+    min-height: 300px;
+    @media (max-width: 768px) {
+      min-width: 90%;
+    }
+  }
+}
+

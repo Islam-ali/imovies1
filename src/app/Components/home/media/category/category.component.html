@@ -1,0 +1,32 @@
+<div class="box-carousel" *ngIf="errorMessage == ''">
+  <div class="w-100 d-flex p-3 title-media">
+    <h2>{{mediaCat +' '+ mediaType}} <i class="fas fa-chevron-right"></i></h2>
+  </div>
+  <swiper *ngIf="mediaCategory != []"
+    [slidesPerView]="'auto'"
+    [spaceBetween]="20"
+    [slidesPerGroup]="1"
+    [loop]="false"
+    [loopFillGroupWithBlank]="true"
+    [navigation]="true"
+    class="mySwiper"
+  >
+  <ng-template swiperSlide *ngFor="let item of mediaCategory?.results">
+    <div
+      class="card"
+      [routerLink]="['/details/'+mediaType+'/'+item.id]"
+    >
+      <img
+        class="img-carousel w-100"
+        [src]="item.poster_path != null ? 'https://image.tmdb.org/t/p/w500' + item.poster_path :'../../../../assets/images/Untitled.jpg'"
+        alt=""
+      />
+      <span>{{ item.vote_average | number: "1.1-1" }}</span>
+      <div style="height: 50px" class="p-2 text-center">
+        <p style="cursor: pointer">{{ item.original_title }}{{ item.original_name }}</p>
+      </div>
+    </div>
+  </ng-template>
+</swiper>
+<div *ngIf="errorMessage != ''" class="w-100 text-center py-5" style="color: #fff;font-weight: 400;"><i class="fa-solid fa-triangle-exclamation mx-2"></i>NOT FOUND</div>
+</div>

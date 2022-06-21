@@ -1,0 +1,77 @@
+<mat-toolbar style="z-index: 9999999999">
+  <mat-toolbar-row style="z-index: 9999999" class="px-5">
+    <span class="prand" routerLink="/"><i class="fas fa-tv"></i> I movies</span>
+    <span class="example-spacer"></span>
+    <!--------------------------form Search------------------------------------------>
+    <ng-container *ngIf="isLogin">
+      <button mat-button (click)="toggleS()" class="d-none button-toggle "><i [ngClass]="toggleSearch ? 'fas fa-search' : 'fas fa-times'"></i></button>
+      <form class="form-search d-flex" [style.display]="toggleSearch ? 'none' : 'flex !important'">
+        <input type="text" class="form-control"  placeholder="Search" name="query" [(ngModel)]="query">
+        <button mat-raised-button [disabled]="query == ''" class="border-radius" color="primary" [routerLink]="['search/', query ]"><i class="fas fa-search"></i></button>
+      </form>
+    </ng-container>
+    <!----------------------------menu register---------------------------------->
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="belowMenu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu
+      style="display: grid; justify-content: center"
+      #belowMenu="matMenu"
+      yPosition="below"
+    >
+      <button *ngIf="!isLogin" mat-menu-item routerLink="register" title="signUp">
+        <img class="mx-2" src="../../../assets/images/icons8-sign-up-32.png" style="width: 20px;" alt="icons8-sign-up-32.png"> signUp
+      </button>
+      <button *ngIf="!isLogin" mat-menu-item routerLink="login" title="logIn">
+        <img class="mx-2" src="../../../assets/images/icons8-sign-in-32.png" style="width: 20px;" alt="icons8-sign-in-32.png"> logIn
+      </button>
+      <button *ngIf="isLogin" mat-menu-item title="logOut" (click)="logout()">
+        <img class="mx-2" src="../../../assets/images/power-off.png" style="width: 20px;" alt="power-off"> logOut
+      </button>
+    </mat-menu>
+    <button
+    *ngIf="isLogin"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon mat-button (click)="snav.toggle()">menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+  <!------------------------      Loading     ----------------------------->
+  <div class="Loading" *ngIf="Loading | async">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</mat-toolbar>
+<!--------------------------------------      sidenav     --------------------------------->
+<mat-sidenav-container style="z-index: 99" class="example-container">
+  <mat-sidenav mode="over" from="right" closed #snav>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 100%;
+      "
+    >
+      <a
+        class="links"
+        *ngFor="let link of links"
+        [routerLink]="'home/'+link"
+        routerLinkActive="active-left"
+      >
+        {{ link }}
+      </a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

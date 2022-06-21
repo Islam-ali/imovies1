@@ -1,0 +1,28 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <section>
+    <app-cover-details [Details]="Details" ></app-cover-details >
+  </section>
+  <div class="container">
+    <!--------------------------- videos -------------------------->
+    <section class="w-100 py-5 text-center position-relative">
+      <app-video [video]="video?.results!"></app-video>
+    </section>
+    <!-------------------------- Seasons ---------------------------->
+    <section *ngIf="Details.seasons?.length != undefined">
+      <app-carousel-tv [data]="Details.seasons" [idTv]="idTv" [title]="'all seasons'"></app-carousel-tv>
+    </section>
+    <!------------------------ Recommendations ---------------------->
+    <ng-container>
+      <app-media-category [mediaCategory]="recommendation.results!" [mediaType]="mediaType" [mediaCat]="'recommendations'"></app-media-category>
+    </ng-container>
+    <!------------------------ Similar ------------------------------>
+    <ng-container>
+      <app-media-category [mediaCategory]="similar.results!" [mediaType]="mediaType" [mediaCat]="'similar'"></app-media-category>
+    </ng-container>
+    <!---------------------------- Reviews --------------------------->
+    <section>
+      <app-reviews [reviews]="reviews.results!"></app-reviews>
+    </section>
+  </div>
+</div>

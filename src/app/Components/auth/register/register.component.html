@@ -1,0 +1,89 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <div class="d-flex justify-content-center align-items-center my-5">
+  <mat-card class="text-center py-5 my-5">
+    <h2 style="color: aliceblue;">Sign Up</h2>
+        <span class="error-message" [style.color]="response?.message == 'success'?'green':'#f44336'">{{response?.errors?.email?.message}}</span>
+    <form  class="w-100" [formGroup]="registerForm" (ngSubmit)="register()">
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <mat-label>first name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="first_name"
+          name="first_name"
+          class="mb-2"
+          required
+          placeholder="first name"
+        />
+        <mat-error *ngIf="f['first_name'].touched && f['first_name'].invalid">
+          <mat-error *ngIf="f['first_name'].errors && f['first_name'].errors['required']">Your first name is not valid</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <mat-label>last name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="last_name"
+          name="last_name"
+          class="mb-2"
+          required
+          placeholder="last name"
+        />
+        <mat-error *ngIf="f['last_name'].touched && f['last_name'].invalid" >
+          <mat-error *ngIf="f['last_name'].errors && f['last_name'].errors['required']">Your last name is not valid</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          name="email"
+          class="mb-2"
+          required
+          email
+          placeholder="Ex.pat@example.com"
+        />
+        <mat-error *ngIf="f['email'].touched && f['email'].invalid" >
+          <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">Your email is not valid</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width w-100 " appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          name="password"
+          formControlName="password"
+          class="mb-2"
+          required
+          minlength="6"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <a
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+        >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </a>
+      <mat-error *ngIf="f['password'].touched && f['password'].invalid" >
+        <mat-error *ngIf="f['password'].errors && f['password'].errors['required']">Your password is not valid</mat-error>
+      </mat-error>
+        <!-- <mat-error *ngIf="minlength == 6">password should be +6 charactar</mat-error> -->
+      </mat-form-field>
+      <button type="submit" [disabled]="registerForm.invalid" mat-raised-button color="primary" >
+        sign Up
+      </button>
+      |
+      <a style="color: #000; text-decoration: none" routerLink="/login"
+        >Sign In</a
+      >
+    </form>
+</mat-card>
+  </div>
+</div>

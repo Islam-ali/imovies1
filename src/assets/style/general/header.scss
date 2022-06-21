@@ -1,0 +1,46 @@
+//h1
+h1
+{
+  padding-left: 15px;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: aliceblue;
+  @media (max-width: 576px){font-size: 20px;}
+}
+h1::before
+{
+  content: '';
+  border-left: aliceblue solid 3px;
+  position: relative;
+  top: 0;
+  left: -10px;
+}
+//h2
+h2
+{
+  padding-left: 10px;
+  margin-right: 20px;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: aliceblue;
+  @media (max-width: 576px){font-size: 20px;}
+}
+h2::before
+{
+  content: '';
+  border-left: aliceblue solid 3px;
+  position: relative;
+  top: 0;
+  left: -10px;
+}
+// h3
+h3
+{
+  font-size: 2.2rem ;
+  font-weight: 600 ;
+  line-height: 40px;
+  color: aliceblue;
+}
+.cursor-pointer{
+  cursor: pointer;
+}

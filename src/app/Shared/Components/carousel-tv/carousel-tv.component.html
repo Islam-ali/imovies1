@@ -1,0 +1,34 @@
+<div class="box-carousel position-relative">
+  <div class="w-100 d-flex p-3">
+    <h2 class="title-media">{{title}}</h2>
+  </div>
+  <swiper
+  [slidesPerView]="'auto'"
+  [spaceBetween]="20"
+  [slidesPerGroup]="1"
+  [loop]="false"
+  [loopFillGroupWithBlank]="true"
+  [navigation]="true"
+  class="mySwiper"
+>
+  <ng-template swiperSlide  *ngFor="let item of data">
+    <div class="card"  (click)="checkRouterLink(idTv,item.season_number,item.episode_number)" >
+      <img
+      *ngIf="title == 'all seasons'"
+        class="img-carousel w-100"
+        [src]="item?.poster_path == null ? '../../../../assets/images/defult-image.webp':'https://image.tmdb.org/t/p/w500' + item?.poster_path "
+        [alt]="item?.poster_path"
+      />
+      <img
+      *ngIf="title == 'all episodes'"
+      class="img-carousel w-100"
+      [src]="item?.still_path == null ? '../../../../assets/images/defult-image.webp':'https://image.tmdb.org/t/p/w500' + item?.still_path "
+      [alt]="item?.still_path"
+      />
+      <div style="height: 50px;" class="p-2 text-center">
+        <p>{{ item?.name }}</p>
+      </div>
+    </div>
+  </ng-template>
+</swiper>
+</div>

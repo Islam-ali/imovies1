@@ -1,0 +1,9 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <div class="container">
+    <!---------------- Discover ------------>
+    <section>
+      <app-discover [mediaType]="'search'" [discoverData]="searchData?.results!" [totalBage]="searchData?.total_pages" (page)="getSearch($event)"></app-discover>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <div class="d-flex justify-content-center align-items-center my-5">
+  <mat-card class="text-center py-5 my-5">
+    <h2 style="color: aliceblue">Log In</h2>
+    <span class="error-message" [style.color]="response?.message == 'success'?'green':'#f44336'">{{response?.message}}</span>
+    <form  [formGroup]="loginForm" (ngSubmit)="login()" class="w-100">
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          name="email"
+          class="mb-2"
+          required
+          email
+          placeholder="Ex.pat@example.com"
+        />
+        <mat-error *ngIf="f['email'].touched && f['email'].invalid" >
+          <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">Your email is not valid</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width w-100 " appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          name="password"
+          formControlName="password"
+          class="mb-2"
+          required
+          minlength="6"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <mat-error *ngIf="f['password'].touched && f['password'].invalid" >
+          <mat-error *ngIf="f['password'].errors && f['password'].errors['required']">Your password is not valid</mat-error>
+        </mat-error>
+        <a
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+        >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </a>
+        <!-- <mat-error *ngIf="minlength == 6">password should be +6 charactar</mat-error> -->
+      </mat-form-field>
+      <button [disabled]="loginForm.invalid" mat-raised-button color="primary" >
+        Log in
+      </button>
+      |
+      <a style="color: #000; text-decoration: none" routerLink="/register"
+        >Sign Up</a
+      >
+    </form>
+</mat-card>
+  </div>

@@ -1,0 +1,27 @@
+.button-icon-toggle .mat-raised-button{
+  min-width: 40px;
+  max-width: 40px;
+  max-height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  &:nth-child(1){
+  border-radius: 10% 0 0 10%;
+
+  }
+  &:nth-child(2){
+    border-radius: 0 10% 10% 0%;
+  }
+  img{
+      max-width: 32px;
+    }
+}
+.active-icon
+{
+  background-color: #fff !important;
+}
+.not-active
+{
+  background-color: #999;
+}

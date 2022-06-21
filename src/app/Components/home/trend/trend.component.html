@@ -1,0 +1,29 @@
+<mat-card>
+    <h3 class="Trend">Trend</h3>
+    <form #myForm="ngForm" (ngSubmit)="view(myForm)" class="row">
+      <mat-form-field class="my-2">
+        <mat-label>Choose an type</mat-label>
+        <mat-select  matNativeControl required name="type" ngModel>
+          <mat-option *ngFor="let item of type" [value]="item.value">{{
+            item.value
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="my-2">
+        <mat-label>Choose an time</mat-label>
+        <mat-select matNativeControl required name="time" ngModel>
+          <mat-option *ngFor="let item of time" [value]="item.value">{{
+            item.value
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        class="m-2"
+        mat-raised-button
+        type="submit"
+        color="primary"
+      >
+        view
+      </button>
+    </form>
+  </mat-card>

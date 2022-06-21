@@ -1,0 +1,94 @@
+<div class="w-100 d-flex justify-content-between p-3 position-relative">
+  <h1>{{ mediaType || title }}</h1>
+  <div class="button-icon-toggle d-flex">
+    <button
+      mat-raised-button
+      class="not-active"
+      (click)="BigWidthHeight()"
+      [class]="toggleSize ? '' : 'active-icon'"
+    >
+      <img src="../../../../assets/images/big-size.png" alt="big-size.png">
+    </button>
+    <button
+      mat-raised-button
+      class="not-active"
+      (click)="WidthHeight()"
+      [class]="toggleSize ? 'active-icon' : ''"
+    >
+    <img src="../../../../assets/images/small-size.png" alt="small-size.png">
+    </button>
+  </div>
+</div>
+<!----------------- card media ----------------->
+<div class="box-card row" *ngIf="discoverData?.length != 0">
+  <ng-container *ngFor="let item of discoverData">
+    <div
+      [class]="toggleSize ? 'small-size' : 'big-size'"
+      class="card"
+      (click)="
+        checkRouterLink(
+          item.id!,
+          item.media_type!,
+          item.season_number!,
+          item.episode_number!
+        )
+      "
+    >
+      <img
+        *ngIf="title != 'episodes'"
+        class="img"
+        [src]="
+          item.poster_path == null
+            ? '../../../../assets/images/Untitled.jpg'
+            : 'https://image.tmdb.org/t/p/w500' + item.poster_path
+        "
+        alt="img"
+      />
+      <img
+        *ngIf="title == 'episodes'"
+        class="img"
+        [src]="
+          item.still_path == null
+            ? '../../../../assets/images/defult-image.webp'
+            : 'https://image.tmdb.org/t/p/w500' + item.still_path
+        "
+        alt="img"
+      />
+      <span>{{ item.vote_average | number: "1.1-1" }}</span>
+      <div
+        class="p-2 d-flex align-items-center justify-content-center text-center original_title"
+      >
+        <p>{{ item.original_title || item.original_name || item.name }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<!-- ----------- error message ------------->
+<ng-container *ngIf="discoverData?.length == 0">
+  <app-error-message
+    [message]="'Not Fond ' + mediaType || title + ''"
+  ></app-error-message>
+</ng-container>
+<div class="w-100 text-center position-relative py-3" *ngIf="totalBage">
+  <div class="select-page">
+    <button
+      [ngStyle]="{ background: pageNumber == 1 ? 'rgba(255,255,255,.6)' : '' }"
+      class="prev-page"
+      (click)="prevBage(pageNumber)"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span class="page-number">
+      {{ pageNumber }}
+    </span>
+    <button
+      [ngStyle]="{
+        background: pageNumber == totalBage ? 'rgba(255,255,255,.6)' : ''
+      }"
+      class="next-page"
+      (click)="nextBage(pageNumber)"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="bage">
+  <div class="filter-blur"></div>
+  <div class="container">
+    <!---------------- Discover ------------>
+    <section>
+      <app-discover [mediaType]="mediaType" [discoverData]="discoverData?.results!" [totalBage]="discoverData?.total_pages" (page)="getDiscover($event)"></app-discover>
+    </section>
+    <!---------------- Media Category -------->
+    <section *ngFor="let item of mediaCategory">
+      <app-category [mediaType]="mediaType" [mediaCat]="item" ></app-category>
+    </section>
+  </div>
+</div>

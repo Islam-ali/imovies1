@@ -1,0 +1,93 @@
+.box-card
+{
+  width: 100%;
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.card{
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: none;
+  border: 5px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  color: aliceblue;
+  padding: 0;
+  background: none;
+  position: relative;
+  .img{
+    height: 100%;
+    width: 100%;
+  }
+  .original_title{
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, .8);
+    height: 25%;
+    width: 100%;
+    color: #fff;
+  }
+  span{
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="rgb(233, 178, 38)" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    padding: 5px 0;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 12px;
+    font-weight: 900;
+    color:#000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.small-size
+{
+  $column_number : 4;
+  min-width: 150px;
+  max-width: calc(100% / $column_number);
+  height: max-content;
+  font-size: 12px;
+  font-weight: 400;
+  @media (max-width: 400px){
+    width: 60%;
+  }
+}
+.big-size
+{
+  $column_number : 3;
+  min-width: 150px;
+  max-width: calc(100% / $column_number);
+  height: max-content;
+  font-size: 16px;
+  font-weight: 400;
+}
+@media (max-width: 768px){
+  .big-size{
+    $column_number : 2;
+    max-width: calc(100% / $column_number);
+  }
+  .small-size{
+    $column_number : 3;
+    max-width: calc(100% / $column_number);
+  }
+}
+@media (max-width: 400px){
+  .big-size{
+    $column_number : 1;
+    max-width: calc(100% / $column_number);
+  }
+  .small-size{
+    $column_number : 2;
+    max-width: calc(100% / $column_number);
+  }
+
+}
